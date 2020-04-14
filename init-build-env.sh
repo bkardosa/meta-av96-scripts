@@ -79,17 +79,12 @@ esac
 DISTRO=openstlinux-weston
 MACHINE=stm32mp1-av96
 META_LAYER_ROOT=layers/
-EULA_DIR=layers/meta-arrow/meta-av96/conf/eula/
 
 BUILD_DIR="build-${DISTRO//-}-$MACHINE"
 
 if [ ! -f "$BUILD_DIR/conf/bblayers.conf" ]; then
 	mkdir -p $BUILD_DIR/conf
 	cp layers/meta-arrow/scripts/files/bblayers.conf $BUILD_DIR/conf/
-fi
-
-if [ ! -L "$EULA_DIR/$MACHINE" ]; then
-	ln -s ../../../../meta-st/meta-st-stm32mp-addons/conf/eula/ST_EULA_SLA $EULA_DIR/$MACHINE
 fi
 
 source layers/meta-st/scripts/envsetup.sh
